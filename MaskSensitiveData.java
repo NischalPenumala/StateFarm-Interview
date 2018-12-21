@@ -82,6 +82,7 @@ public class MaskSensitiveData {
 		public void displayData(){
           try(Connection conn = connect();
 					Statement stat = conn.createStatement()){
+				//Select query will mask the ssn, phone number and email
 				boolean hasResultSet = stat.execute("select customer_id,customer_name,CONCAT('xxxxxx',RIGHT(phone_number,4) as phone_number,CONCAT('xxx-xx-',RIGHT(ssn,4)) as ssn,policy,CONCAT('xxxxx',RIGHT(email,3)) from customer");
 				if(hasResultSet){
 					ResultSet result = stat.getResultSet();
