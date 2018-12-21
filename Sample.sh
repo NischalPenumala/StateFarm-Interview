@@ -1,9 +1,15 @@
 #!/bin/ksh
+
+#1. Passing the customerid, country and incident number as input to the script
+#2. Get the region(ASPAC,EMEA,LATAM,NAM) based on the country.
+#3. Based on the region login to region database and insert the values.
+
 . /home/nischal/bin/profile.sh
 . /home/nischal/conf/context.properties
 gfcid=$1
 cntr=$2
 inc=$3
+
 $ORACLE_HOME/bin/sqlplus -s $db_login/$regpwd@$app_sid << !
 set pageize 0 feedback off verify heading off echo off feed off
 
